@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recapp Content Associate · Poster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: radial-gradient(circle at top left, #111827, #020617);
+        color: #f9fafb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+      .poster {
+        width: 100%;
+        max-width: 900px;
+        aspect-ratio: 17 / 11;
+        background: radial-gradient(circle at 0% 0%, #facc15, #020617 55%);
+        border-radius: 24px;
+        padding: 32px 40px;
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 32px;
+        box-shadow:
+          0 32px 90px rgba(15, 23, 42, 0.95),
+          0 0 0 1px rgba(15, 23, 42, 0.9);
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .tagline {
+        font-size: 40px;
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+      }
+      .tagline span {
+        display: block;
+      }
+      .highlight {
+        color: #facc15;
+      }
+      .subcopy {
+        margin-top: 12px;
+        font-size: 15px;
+        max-width: 440px;
+      }
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        margin-top: 18px;
+      }
+      .badge {
+        padding: 5px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(15, 23, 42, 0.85);
+        background: rgba(15, 23, 42, 0.82);
+      }
+      .badge.gold {
+        background: rgba(250, 204, 21, 0.12);
+        border-color: rgba(250, 204, 21, 0.7);
+        color: #facc15;
+      }
+      .qr-panel {
+        border-radius: 18px;
+        background: radial-gradient(circle at 100% 0%, #111827, #020617);
+        border: 1px solid rgba(15, 23, 42, 0.95);
+        padding: 20px 20px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+      .qr-title {
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+      }
+      #qrcode {
+        width: 220px;
+        height: 220px;
+        border-radius: 16px;
+        padding: 12px;
+        background: #020617;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .qr-caption {
+        font-size: 12px;
+        text-align: center;
+        color: #e5e7eb;
+      }
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 11px;
+        color: #d1d5db;
+        margin-top: 14px;
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+      }
+      .logo img {
+        height: 28px;
+        width: auto;
+        display: block;
+      }
+      .url {
+        font-weight: 600;
+      }
+      @media print {
+        body {
+          padding: 0;
+          background: #fff;
+        }
+        .poster {
+          box-shadow: none;
+          border-radius: 0;
+        }
+      }
+      @media (max-width: 800px) {
+        .poster {
+          grid-template-columns: 1fr;
+          aspect-ratio: auto;
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  </head>
+  <body>
+    <div class="poster">
+      <div class="left">
+        <div>
+          <div class="tagline">
+            <span>Turn your</span>
+            <span class="highlight">sports obsession</span>
+            <span>into a job.</span>
+          </div>
+          <p class="subcopy">
+            Scan to learn more and apply for the
+            <strong>Sports Content Associate</strong> role at Recapp—
+            a next‑gen AI sports media platform built for highlight junkies.
+          </p>
+          <div class="badge-row">
+            <div class="badge gold">Remote · Paid · Flexible days</div>
+            <div class="badge">Perfect for recent grads</div>
+          </div>
+        </div>
+        <div class="footer-row">
+          <div class="logo">
+            <img src="assets/recapp-logo-TM-final_recapp-logo-gold-horizontal-TM-af49c12f-8614-4ff8-b59c-58cfe8f6690b.png" alt="Recapp" />
+          </div>
+          <div>
+            <div class="url" id="landing-url-text">recapp.co/content-associate</div>
+            <div>Questions? Visit recapp.co</div>
+          </div>
+        </div>
+      </div>
+      <div class="qr-panel">
+        <div class="qr-title">Scan to view the role & apply</div>
+        <div id="qrcode">
+          <canvas id="qr-canvas"></canvas>
+        </div>
+        <div class="qr-caption">
+          Open the page, hit “Apply in 30 seconds,” and your email will pre‑fill with
+          what we need.
+        </div>
+      </div>
+    </div>
+    <script>
+      const landingUrl =
+        window.location.origin + window.location.pathname.replace(/poster\.html$/, "");
+      const qr = new QRious({
+        element: document.getElementById("qr-canvas"),
+        value: landingUrl,
+        size: 190,
+        level: "H",
+      });
+
+      const el = document.getElementById("landing-url-text");
+      if (el) el.textContent = landingUrl.replace(/\/$/, "");
+    </script>
+  </body>
+  </html>
+
