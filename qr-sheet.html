@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recapp · QR — Apply</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      @page {
+        size: letter;
+        margin: 0.75in;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        background: #f4f4f5;
+        color: #18181b;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .sheet {
+        width: 100%;
+        max-width: 4.25in;
+        background: #fff;
+        border-radius: 12px;
+        border: 1px solid #e4e4e7;
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.06),
+          0 12px 40px rgba(0, 0, 0, 0.06);
+        padding: 32px 28px 28px;
+        text-align: center;
+      }
+
+      .accent {
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, #eab308, #ca8a04);
+        border-radius: 2px;
+        margin: 0 auto 20px;
+      }
+
+      .kicker {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #71717a;
+        margin-bottom: 8px;
+      }
+
+      h1 {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+        color: #09090b;
+        margin-bottom: 6px;
+      }
+
+      .sub {
+        font-size: 13px;
+        font-weight: 500;
+        color: #52525b;
+        line-height: 1.45;
+        margin-bottom: 24px;
+      }
+
+      .qr-wrap {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px;
+        background: #fff;
+        border: 1px solid #e4e4e7;
+        border-radius: 10px;
+        margin-bottom: 18px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      #qrcode {
+        width: 180px;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .url {
+        font-size: 11px;
+        font-weight: 600;
+        color: #3f3f46;
+        letter-spacing: 0.02em;
+        word-break: break-all;
+        margin-bottom: 14px;
+      }
+
+      .fine {
+        font-size: 10px;
+        line-height: 1.5;
+        color: #a1a1aa;
+        max-width: 240px;
+        margin: 0 auto;
+      }
+
+      .hint {
+        display: none;
+        margin-top: 20px;
+        max-width: 4.25in;
+        font-size: 11px;
+        color: #71717a;
+        text-align: center;
+        line-height: 1.5;
+      }
+
+      .hint strong {
+        color: #18181b;
+      }
+
+      @media screen {
+        .hint {
+          display: block;
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff;
+          padding: 0;
+        }
+
+        .hint {
+          display: none !important;
+        }
+
+        .sheet {
+          max-width: none;
+          width: 100%;
+          border: none;
+          box-shadow: none;
+          border-radius: 0;
+          padding: 0;
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <div class="sheet">
+        <div class="accent" aria-hidden="true"></div>
+        <p class="kicker">Careers · Recapp</p>
+        <h1>Sports Content Associate</h1>
+        <p class="sub">
+          Scan to open the role page—remote, paid, built for sports fans who love the story behind the highlight.
+        </p>
+        <div class="qr-wrap">
+          <div id="qrcode">
+            <canvas id="qr-canvas"></canvas>
+          </div>
+        </div>
+        <p class="url" id="landing-url-text">—</p>
+        <p class="fine">
+          Opens in your browser. Use “Apply in 30 seconds” on the site to email the team.
+        </p>
+      </div>
+      <p class="hint">
+        <strong>Print or Save as PDF</strong> — Use white paper; no need for background graphics on this page.
+        For multiple cards, print once and duplicate, or adjust zoom in the print dialog.
+      </p>
+    </div>
+    <script>
+      const landingUrl =
+        window.location.origin +
+        window.location.pathname.replace(/qr-sheet\.html$/, "");
+      new QRious({
+        element: document.getElementById("qr-canvas"),
+        value: landingUrl,
+        size: 168,
+        level: "H",
+      });
+      const el = document.getElementById("landing-url-text");
+      if (el) el.textContent = landingUrl.replace(/\/$/, "");
+    </script>
+  </body>
+</html>
