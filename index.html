@@ -60,10 +60,10 @@
           <div class="hero-media">
             <div class="phone-frame">
               <video
+                id="hero-phone-video"
                 src="assets/screenrecording-2.mp4"
                 autoplay
                 muted
-                loop
                 playsinline
               ></video>
             </div>
@@ -253,6 +253,20 @@
         .addEventListener("click", openApplyEmail);
 
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Hero phone: skip first 1s, then loop from that point (native `loop` resets to 0).
+      (function () {
+        const v = document.getElementById("hero-phone-video");
+        if (!v) return;
+        const trimStart = 1;
+        v.addEventListener("loadedmetadata", function () {
+          v.currentTime = trimStart;
+        });
+        v.addEventListener("ended", function () {
+          v.currentTime = trimStart;
+          v.play().catch(function () {});
+        });
+      })();
 
       // Generate the QR code shown on the site (same destination as the landing page).
       // Build it dynamically so it works after deploying to GitHub Pages.
