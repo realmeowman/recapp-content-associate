@@ -30,7 +30,7 @@
       body {
         font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           sans-serif;
-        background: #0a0a0c;
+        background: #000;
         color: #f9fafb;
         min-height: 100vh;
         display: flex;
@@ -43,12 +43,9 @@
         width: 100%;
         max-width: 8.5in;
         min-height: 10.2in;
-        background:
-          radial-gradient(ellipse 120% 80% at 0% 0%, rgba(250, 204, 21, 0.35), transparent 55%),
-          radial-gradient(ellipse 90% 60% at 100% 100%, rgba(250, 204, 21, 0.12), transparent 50%),
-          linear-gradient(165deg, #0c0c10 0%, #020617 45%, #0a0a0f 100%);
+        background: #000;
         border-radius: 20px;
-        border: 1px solid rgba(250, 204, 21, 0.25);
+        border: 1px solid rgba(250, 204, 21, 0.2);
         padding: 36px 40px 32px;
         display: grid;
         grid-template-rows: auto 1fr auto;
@@ -221,7 +218,7 @@
       @media print {
         body {
           padding: 0;
-          background: #fff;
+          background: #000;
         }
 
         .print-hint {
@@ -235,6 +232,7 @@
           box-shadow: none;
           border: none;
           padding: 0;
+          background: #000;
         }
 
         .flier-mid {
