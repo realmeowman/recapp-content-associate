@@ -191,7 +191,7 @@
       <div class="sheet">
         <div class="logo-wrap">
           <div class="logo-inner">
-            <img class="sheet-logo" src="assets/recapp-logo-qr-sheet.png" alt="Recapp" />
+            <img id="sheet-logo-img" class="sheet-logo" alt="Recapp" decoding="async" />
           </div>
         </div>
         <div class="accent" aria-hidden="true"></div>
@@ -216,6 +216,23 @@
       </p>
     </div>
     <script>
+      (function () {
+        var p = window.location.pathname;
+        var base = p.slice(0, p.lastIndexOf("/") + 1);
+        var img = document.getElementById("sheet-logo-img");
+        if (!img) return;
+        function setLogo(file) {
+          img.src = base + "assets/" + file;
+        }
+        setLogo("recapp-logo-qr-sheet.png");
+        img.onerror = function () {
+          img.onerror = null;
+          setLogo(
+            "recapp-logo-TM-final_recapp-logo-gold-horizontal-TM-af49c12f-8614-4ff8-b59c-58cfe8f6690b.png"
+          );
+        };
+      })();
+
       const landingUrl =
         window.location.origin +
         window.location.pathname.replace(/qr-sheet\.html$/, "");
