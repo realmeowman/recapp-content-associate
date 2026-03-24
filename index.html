@@ -39,8 +39,8 @@
             </h1>
             <p class="hero-subtitle">
               Join a remote team of sports-obsessed storytellers helping build the
-              next generation AI sports media platform. Shape what millions of
-              fans see, share, and talk about every day.
+              next generation AI sports media platform. Shape what fans see, share,
+              and talk about every day.
             </p>
             <div class="hero-cta-group">
               <button id="apply-button" class="primary-cta">Apply in 30 seconds</button>
@@ -141,7 +141,7 @@
         <div class="pill-row">
           <div class="pill">
             <span class="pill-label">You’ll love this role if you…</span>
-            <span>live on sports Twitter/TikTok, write clean copy, and care about the details.</span>
+            <span>Live on sports Twitter/TikTok, write clean copy, and care about the details.</span>
           </div>
         </div>
       </section>
@@ -240,24 +240,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script>
+      // Change this when you have the final inbox for applications.
       const applyEmail = "careers@recapp.co";
       function openApplyEmail() {
         const subject = encodeURIComponent("Recapp Sports Content Associate Application");
-        const body = encodeURIComponent(
-          [
-            "Hi Recapp team,",
-            "",
-            "I’m interested in the Sports Content Associate role.",
-            "",
-            "Name:",
-            "School / Grad year:",
-            "Sports I follow most closely:",
-            "Links to writing / social content samples:",
-            "",
-            "Thanks!"
-          ].join("\\n")
-        );
-        window.location.href = `mailto:${applyEmail}?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:${applyEmail}?subject=${subject}`;
       }
 
       document.getElementById("apply-button").addEventListener("click", openApplyEmail);
