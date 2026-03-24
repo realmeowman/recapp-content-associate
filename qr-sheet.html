@@ -51,6 +51,28 @@
         text-align: center;
       }
 
+      .logo-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .logo-inner {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #09090b;
+        padding: 12px 28px;
+        border-radius: 10px;
+        border: 1px solid #27272a;
+      }
+
+      .sheet-logo {
+        height: 34px;
+        width: auto;
+        display: block;
+      }
+
       .accent {
         width: 40px;
         height: 3px;
@@ -167,6 +189,11 @@
   <body>
     <div>
       <div class="sheet">
+        <div class="logo-wrap">
+          <div class="logo-inner">
+            <img class="sheet-logo" src="assets/recapp-logo-qr-sheet.png" alt="Recapp" />
+          </div>
+        </div>
         <div class="accent" aria-hidden="true"></div>
         <p class="kicker">Careers · Recapp</p>
         <h1>Sports Content Associate</h1>
