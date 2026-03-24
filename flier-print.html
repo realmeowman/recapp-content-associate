@@ -17,9 +17,10 @@
         padding: 0;
       }
 
+      /* US Letter — landscape (11in × 8.5in) for wide, poster-style print */
       @page {
-        size: letter;
-        margin: 0.35in;
+        size: letter landscape;
+        margin: 0.4in;
       }
 
       html {
@@ -41,7 +42,8 @@
 
       .flier {
         width: 100%;
-        max-width: 8.5in;
+        /* Match printable width in landscape (~11in sheet minus margins) */
+        max-width: 10.2in;
         /* Height follows content only — avoid huge empty black area in print */
         background: #000;
         border-radius: 20px;
@@ -83,13 +85,13 @@
 
       .flier-mid {
         display: grid;
-        grid-template-columns: 1.25fr 1fr;
-        gap: 32px;
+        grid-template-columns: 1.35fr 1fr;
+        gap: 36px;
         align-items: center;
       }
 
       .headline {
-        font-size: clamp(28px, 3.5vw, 40px);
+        font-size: clamp(28px, 2.8vw, 44px);
         font-weight: 800;
         line-height: 1.05;
         letter-spacing: -0.04em;
@@ -106,7 +108,7 @@
         font-size: 14px;
         line-height: 1.5;
         color: rgba(229, 231, 235, 0.95);
-        max-width: 420px;
+        max-width: 520px;
       }
 
       .badges {
@@ -156,8 +158,8 @@
       }
 
       #qrcode {
-        width: 200px;
-        height: 200px;
+        width: 210px;
+        height: 210px;
         border-radius: 14px;
         padding: 10px;
         background: #fff;
@@ -203,7 +205,7 @@
         background: rgba(250, 204, 21, 0.08);
         border: 1px dashed rgba(250, 204, 21, 0.35);
         margin-bottom: 12px;
-        max-width: 8.5in;
+        max-width: 10.5in;
       }
 
       .print-hint strong {
@@ -245,7 +247,22 @@
         }
 
         .flier-mid {
-          gap: 0.35in;
+          gap: 0.45in;
+          align-items: start;
+        }
+
+        .headline {
+          font-size: 38px;
+        }
+
+        .dek {
+          font-size: 13px;
+          max-width: none;
+        }
+
+        #qrcode {
+          width: 200px;
+          height: 200px;
         }
       }
 
@@ -260,7 +277,7 @@
   <body>
     <div>
       <p class="print-hint">
-        <strong>Print</strong> — Use “Print” → enable <strong>Background graphics</strong> (or “Print backgrounds”) so colors and gold print correctly. Then save as PDF or print on paper.
+        <strong>Print (landscape)</strong> — This page uses <strong>US Letter, landscape</strong>. In the print dialog, choose <strong>Landscape</strong> if your browser doesn’t pick it up automatically. Enable <strong>Background graphics</strong> so black and gold print correctly, then print or save as PDF.
       </p>
       <div class="flier">
         <header class="flier-top">
@@ -314,7 +331,7 @@
       new QRious({
         element: document.getElementById("qr-canvas"),
         value: landingUrl,
-        size: 180,
+        size: 195,
         level: "H",
       });
       const el = document.getElementById("landing-url-text");
