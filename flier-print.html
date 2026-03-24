@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recapp · Content Associate Flier (print)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      @page {
+        size: letter;
+        margin: 0.35in;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: #0a0a0c;
+        color: #f9fafb;
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 16px;
+      }
+
+      .flier {
+        width: 100%;
+        max-width: 8.5in;
+        min-height: 10.2in;
+        background:
+          radial-gradient(ellipse 120% 80% at 0% 0%, rgba(250, 204, 21, 0.35), transparent 55%),
+          radial-gradient(ellipse 90% 60% at 100% 100%, rgba(250, 204, 21, 0.12), transparent 50%),
+          linear-gradient(165deg, #0c0c10 0%, #020617 45%, #0a0a0f 100%);
+        border-radius: 20px;
+        border: 1px solid rgba(250, 204, 21, 0.25);
+        padding: 36px 40px 32px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 24px;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+      }
+
+      .flier-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .logo img {
+        height: 36px;
+        width: auto;
+        display: block;
+      }
+
+      .role-pill {
+        display: inline-flex;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(250, 204, 21, 0.12);
+        border: 1px solid rgba(250, 204, 21, 0.45);
+        color: #facc15;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .flier-mid {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .headline {
+        font-size: clamp(28px, 3.5vw, 40px);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+      }
+
+      .headline .gold {
+        color: #facc15;
+        display: block;
+      }
+
+      .dek {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: rgba(229, 231, 235, 0.95);
+        max-width: 420px;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .badge {
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        background: rgba(15, 23, 42, 0.75);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        color: #e5e7eb;
+      }
+
+      .badge.accent {
+        background: rgba(250, 204, 21, 0.15);
+        border-color: rgba(250, 204, 21, 0.7);
+        color: #facc15;
+      }
+
+      .qr-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 20px;
+        border-radius: 18px;
+        background: radial-gradient(circle at 50% 0%, #1f2937, #020617);
+        border: 1px solid rgba(250, 204, 21, 0.2);
+      }
+
+      .qr-block h2 {
+        font-size: 13px;
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #facc15;
+      }
+
+      #qrcode {
+        width: 200px;
+        height: 200px;
+        border-radius: 14px;
+        padding: 10px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .url-line {
+        font-size: 12px;
+        font-weight: 700;
+        color: #fef9c3;
+        text-align: center;
+        word-break: break-all;
+      }
+
+      .qr-note {
+        font-size: 11px;
+        text-align: center;
+        color: rgba(209, 213, 219, 0.95);
+        line-height: 1.4;
+        max-width: 220px;
+      }
+
+      .flier-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(250, 204, 21, 0.25);
+        font-size: 11px;
+        color: rgba(209, 213, 219, 0.9);
+      }
+
+      .print-hint {
+        display: none;
+        font-size: 11px;
+        color: rgba(156, 163, 175, 0.95);
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: rgba(250, 204, 21, 0.08);
+        border: 1px dashed rgba(250, 204, 21, 0.35);
+        margin-bottom: 12px;
+        max-width: 8.5in;
+      }
+
+      .print-hint strong {
+        color: #facc15;
+      }
+
+      @media screen {
+        .print-hint {
+          display: block;
+        }
+      }
+
+      @media print {
+        body {
+          padding: 0;
+          background: #fff;
+        }
+
+        .print-hint {
+          display: none !important;
+        }
+
+        .flier {
+          max-width: none;
+          min-height: auto;
+          border-radius: 0;
+          box-shadow: none;
+          border: none;
+          padding: 0;
+        }
+
+        .flier-mid {
+          gap: 0.35in;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .flier-mid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <p class="print-hint">
+        <strong>Print</strong> — Use “Print” → enable <strong>Background graphics</strong> (or “Print backgrounds”) so colors and gold print correctly. Then save as PDF or print on paper.
+      </p>
+      <div class="flier">
+        <header class="flier-top">
+          <div class="logo">
+            <img
+              src="assets/recapp-logo-TM-final_recapp-logo-gold-horizontal-TM-af49c12f-8614-4ff8-b59c-58cfe8f6690b.png"
+              alt="Recapp"
+            />
+          </div>
+          <div class="role-pill">Sports Content Associate</div>
+        </header>
+
+        <div class="flier-mid">
+          <div class="copy">
+            <h1 class="headline">
+              Turn your
+              <span class="gold">sports obsession</span>
+              into a job.
+            </h1>
+            <p class="dek">
+              Scan the code to learn more and apply for the
+              <strong>Sports Content Associate</strong> role at Recapp—a next‑gen AI sports media platform built for fans who live on highlights.
+            </p>
+            <div class="badges">
+              <span class="badge accent">Remote · Paid · Flexible days</span>
+              <span class="badge">Perfect for recent grads</span>
+            </div>
+          </div>
+          <div class="qr-block">
+            <h2>Scan to apply</h2>
+            <div id="qrcode">
+              <canvas id="qr-canvas"></canvas>
+            </div>
+            <div class="url-line" id="landing-url-text">recapp-ca.info</div>
+            <p class="qr-note">
+              Opens the career site. Tap <strong>Apply in 30 seconds</strong> to email the team.
+            </p>
+          </div>
+        </div>
+
+        <footer class="flier-bottom">
+          <span>recapp-ca.info · Sports Content Associate · Remote · Freelance</span>
+          <span>Questions? Visit recapp.co</span>
+        </footer>
+      </div>
+    </div>
+    <script>
+      const landingUrl =
+        window.location.origin + window.location.pathname.replace(/flier-print\.html$/, "");
+      new QRious({
+        element: document.getElementById("qr-canvas"),
+        value: landingUrl,
+        size: 180,
+        level: "H",
+      });
+      const el = document.getElementById("landing-url-text");
+      if (el) el.textContent = landingUrl.replace(/\/$/, "");
+    </script>
+  </body>
+</html>
