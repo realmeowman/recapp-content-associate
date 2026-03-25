@@ -242,8 +242,7 @@
     <script>
       const applyEmail = "Content@recapp.co";
       function openApplyEmail() {
-        const subject = encodeURIComponent("Recapp Sports Content Associate Application");
-        window.location.href = `mailto:${applyEmail}?subject=${subject}`;
+        window.location.href = `mailto:${applyEmail}`;
       }
 
       document.getElementById("apply-button").addEventListener("click", openApplyEmail);
