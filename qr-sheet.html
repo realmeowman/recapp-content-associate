@@ -63,14 +63,12 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background: #09090b;
-        padding: 12px 28px;
-        border-radius: 10px;
-        border: 1px solid #27272a;
+        background: transparent;
+        padding: 0;
       }
 
       .sheet-logo {
-        height: 34px;
+        height: 38px;
         width: auto;
         display: block;
       }
@@ -226,7 +224,7 @@
         function setLogo(file) {
           img.src = base + "assets/" + file;
         }
-        setLogo("recapp-logo-qr-sheet.png");
+        setLogo("recapp-logo-header.png");
         img.onerror = function () {
           img.onerror = null;
           setLogo(
